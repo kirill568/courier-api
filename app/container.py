@@ -14,3 +14,5 @@ class Container(containers.DeclarativeContainer):
     )
 
     db = providers.Singleton(DatabaseSessionManager, db_url=POSTGRES_DATABASE_URL)
+
+    district_repository = providers.Factory(DistrictRepository, session=db.provided.session)

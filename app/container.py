@@ -16,3 +16,8 @@ class Container(containers.DeclarativeContainer):
     db = providers.Singleton(DatabaseSessionManager, db_url=POSTGRES_DATABASE_URL)
 
     district_repository = providers.Factory(DistrictRepository, session=db.provided.session)
+    courier_repository = providers.Factory(CourierRepository, session=db.provided.session)
+    district_courier_repository = providers.Factory(DistrictCourierRepository, session=db.provided.session)
+
+    courier_service = providers.Factory(CourierService, courier_repository=courier_repository, district_repository=district_repository, district_courier_repository=district_courier_repository)
+    district_service = providers.Factory(DistrictService, district_repository=district_repository)

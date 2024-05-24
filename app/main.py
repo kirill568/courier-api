@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.container import Container
 from app.routers import district
+from app.routers import courier
 
 
 class AppCreator:
@@ -18,6 +19,7 @@ class AppCreator:
             return "service is working"
         
         self.app.include_router(district.router)
+        self.app.include_router(courier.router)
 
 app_creator = AppCreator()
 app = app_creator.app

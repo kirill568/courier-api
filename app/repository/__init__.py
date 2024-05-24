@@ -2,3 +2,4 @@ from app.repository.base_repository import BaseRepository
 from app.repository.district_repository import DistrictRepository
 from app.repository.courier_repository import CourierRepository
 from app.repository.district_courier_repository import DistrictCourierRepository
+from app.repository.order_repository import OrderRepository

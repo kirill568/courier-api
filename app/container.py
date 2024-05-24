@@ -18,6 +18,8 @@ class Container(containers.DeclarativeContainer):
     district_repository = providers.Factory(DistrictRepository, session=db.provided.session)
     courier_repository = providers.Factory(CourierRepository, session=db.provided.session)
     district_courier_repository = providers.Factory(DistrictCourierRepository, session=db.provided.session)
+    order_repository = providers.Factory(OrderRepository, session=db.provided.session)
 
     courier_service = providers.Factory(CourierService, courier_repository=courier_repository, district_repository=district_repository, district_courier_repository=district_courier_repository)
     district_service = providers.Factory(DistrictService, district_repository=district_repository)
+    order_service = providers.Factory(OrderService, order_repository=order_repository, courier_repository=courier_repository, district_repository=district_repository)

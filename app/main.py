@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.container import Container
 from app.routers import district
 from app.routers import courier
+from app.routers import order
 
 
 class AppCreator:
@@ -20,6 +21,7 @@ class AppCreator:
         
         self.app.include_router(district.router)
         self.app.include_router(courier.router)
+        self.app.include_router(order.router)
 
 app_creator = AppCreator()
 app = app_creator.app

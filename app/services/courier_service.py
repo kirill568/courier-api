@@ -1,7 +1,7 @@
 from app.services import BaseService
 from app.repository import DistrictRepository, CourierRepository, DistrictCourierRepository
 from app.exceptions import NotFoundError
-from app.models import District, Courier, DistrictCourier
+from app.models import District, Courier, DistrictCourier, CourierStatuses
 from app.schemas.courier import CreateCourierSchema
 from typing import List, Union
 
@@ -14,7 +14,8 @@ class CourierService(BaseService):
 
     async def create_courier(self, schema: CreateCourierSchema) -> Courier:        
         courier: Courier = await self.courier_repository.create(Courier(
-            name = schema.name
+            name = schema.name,
+            status = CourierStatuses.idle
         ))
 
         for district_id in schema.districts_ids:

@@ -40,6 +40,15 @@ class BaseRepository:
             await session.commit()
             await session.refresh(db_model)
             return await self.get_by_id(id)
+        
+    async def update_attr(self, id: int, column: str, value):
+        async with self.session() as session:
+            db_model = await session.get(self.model, id)
+
+            setattr(db_model, column, value)
+
+            await session.commit()
+            await session.refresh(db_model)
 
     async def delete(self, id: int):
         async with self.session() as session:

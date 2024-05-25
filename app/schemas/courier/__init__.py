@@ -1,2 +1,3 @@
 from app.schemas.courier.create_courier import CreateCourierSchema
 from app.schemas.courier.courier_schema import CourierSchema
+from app.schemas.courier.detailed_courier_schema import DetailedCourierSchema

@@ -37,3 +37,6 @@ def downgrade() -> None:
     op.drop_column('order', 'status')
     op.drop_column('courier', 'status')
     # ### end Alembic commands ###
+    bind = op.get_bind()
+    sa.Enum(name='courierstatuses').drop(bind, checkfirst=False)
+    sa.Enum(name='orderstatuses').drop(bind, checkfirst=False)

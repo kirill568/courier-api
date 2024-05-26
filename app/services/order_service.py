@@ -20,7 +20,7 @@ class OrderService(BaseService):
 
         courier: Courier = await self.courier_repository.get_idle_courier_by_district_id(schema.district_id)
         if courier is None:
-            raise NotFoundError("No suitable courier found")
+            raise NotFoundError("Suitable courier not found")
 
         await self.courier_repository.update_attr(courier.id, "status", CourierStatuses.busy)
         

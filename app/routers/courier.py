@@ -42,7 +42,7 @@ async def get_courier(
     order_repository: OrderRepository = Depends(Provide[Container.order_repository])
 ):
     active_order: Union[Order, None] = await order_repository.get_active_order_by_courier_id(courier.id)
-    avg_order_complete_time: time = await courier_repository.get_avg_order_complete_time(courier.id)
+    avg_order_complete_time: Union[time, None] = await courier_repository.get_avg_order_complete_time(courier.id)
     avg_day_orders: int = await courier_repository.get_avg_day_orders(courier.id)
 
     active_order_schema = None

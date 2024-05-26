@@ -32,7 +32,8 @@ class CourierRepository(BaseRepository):
                 .where(Order.status == OrderStatuses.finished)
             )
             result = await session.execute(stmt)
-            return datetime.strptime(str(result.scalar()), '%H:%M:%S.%f').time()
+            time = result.scalar()
+            return datetime.strptime(str(time), '%H:%M:%S.%f').time() if time is not None else None
 
     async def get_avg_day_orders(self, courier_id: int) -> int:
         async with self.session() as session:
@@ -49,4 +50,5 @@ class CourierRepository(BaseRepository):
             )
 
             result = await session.execute(stmt)
-            return floor(result.scalar())
+            number = result.scalar()
+            return floor(number) if number is not None else 0

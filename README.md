@@ -6,7 +6,7 @@
 5. Выполните миграции `docker compose exec web poetry run alembic upgrade head`
 6. Откройте браузер по адресу `http://127.0.0.1:9000`  
 
-Просмотр базы данных доступен по адресу - `http://127.0.0.1:8080/ (Движок=PostgresSQL, сервер=postgres, имя пользователя=POSTGRES_USER, пароль=POSTGRES_PASSWORD)`  
+Просмотр базы данных доступен по адресу - `http://127.0.0.1:8080/` (Движок=PostgresSQL, сервер=postgres, имя пользователя=POSTGRES_USER, пароль=POSTGRES_PASSWORD)  
 Документация доступна по адресу - `http://127.0.0.1:9000/docs`  
 
 ## Миграции  
